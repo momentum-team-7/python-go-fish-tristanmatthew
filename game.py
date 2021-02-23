@@ -30,7 +30,7 @@ class Deck:
     # takes a player and a deck and adds the top card from the deck to a player's hand
     def deal_card(self):
         draw_card = self.cards.pop(0)
-        return draw_card
+        
 
 
 class Player:
@@ -46,16 +46,23 @@ class Game:
         self.player1 = Player(name1)
         self.player2 = Player(name2)
         self.winner = False
-
+        self.deal_hands()
     # TO DO use deal_card() method from Deck class to deal 7 cards to each player
     def deal_hands(self):
+        players = [self.player1, self.player2]
         for i in range(7):
-            self.player1.hand.append(self.deck.deal_card())
-            self.player2.hand.append(self.deck.deal_card())
-            self.deck.deal_card()
+            for player in players:
+                player.hand.append(self.deck.deal_card())
+        print(len(self.deck.cards))
         print("You now have 7 cards. ")
 
     # TO DO create turn action in which player asks for a card and goes fish according to the rules
     # Determine if the turn was a winning/losing turn
     # def turn():
-        # pass
+    #     pass
+
+
+
+
+
+new_game = Game(RANKS, SUITS, "Player 1", "Player 2")
