@@ -44,13 +44,16 @@ class Game:
         self.deck = Deck(ranks, suits)
         self.deck.shuffle_deck()
         self.player1 = Player(name1)
-        self.Player2 = Player(name2)
+        self.player2 = Player(name2)
         self.winner = False
 
     # TO DO use deal_card() method from Deck class to deal 7 cards to each player
     def deal_hands(self):
         for i in range(7):
+            self.player1.hand.append(self.deck.deal_card())
+            self.player2.hand.append(self.deck.deal_card())
             self.deck.deal_card()
+        print("You now have 7 cards. ")
 
     # TO DO create turn action in which player asks for a card and goes fish according to the rules
     # Determine if the turn was a winning/losing turn
